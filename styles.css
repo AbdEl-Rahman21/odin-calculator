@@ -1,0 +1,67 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  background-color: goldenrod;
+  align-items: center;
+  justify-content: center;
+  zoom: 200%;
+}
+
+h1 {
+  font-size: xx-large;
+}
+
+#mainContainer {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  border-radius: 12px;
+  background-color: black;
+  padding: 8px;
+}
+
+#textContainer {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  border-radius: 12px;
+  background-color: #303030;
+  border-radius: 6px;
+  margin-bottom: 18px;
+}
+
+p {
+  display: flex;
+  flex: auto;
+  justify-content: end;
+  margin: 4px;
+  color: white;
+}
+
+#buttonContainer {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rows {
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  gap: 6px;
+}
+
+button {
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  background-color: #303030;
+  border-radius: 6px;
+  color: white;
+}
