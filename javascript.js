@@ -5,24 +5,35 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     if (button.className === "number") {
-      createNumber(button.textContent);
+      createNumber(button.getAttribute("data-key"));
     } else {
-      handleOperator(button.textContent);
+      handleOperator(button.getAttribute("data-key"));
+    }
+  });
+});
+
+window.addEventListener("keydown", (e) => {
+  buttons.forEach((button) => {
+    if (e.key === button.getAttribute("data-key")) {
+      button.click();
+    } else if (e.key === "Enter" && button.getAttribute("data-key") === "=") {
+      button.click();
     }
   });
 });
 
 function createNumber(number) {
-  if (topText.textContent.includes("=")) {
+  if (topText.textContent.includes("=") && number !== "F9") {
     equation[0] = "";
+    topText.textContent = "";
   }
 
   if (equation[1] === "") {
     if (number === "." && equation[0].includes(".")) return;
-    if (number === "CE") {
+    if (number === "Backspace") {
       equation[0] = "";
       bottomText.textContent = "0";
-    } else if (number === "+/-") {
+    } else if (number === "F9") {
       equation[0] = (Number(equation[0]) * -1).toString();
       bottomText.textContent = equation[0];
     } else {
@@ -31,10 +42,10 @@ function createNumber(number) {
     }
   } else {
     if (number === "." && equation[2].includes(".")) return;
-    if (number === "CE") {
+    if (number === "Backspace") {
       equation[2] = "";
       bottomText.textContent = "0";
-    } else if (number === "+/-") {
+    } else if (number === "F9") {
       equation[2] = (Number(equation[2]) * -1).toString();
       bottomText.textContent = equation[2];
     } else {
@@ -46,12 +57,12 @@ function createNumber(number) {
 
 function handleOperator(operator) {
   switch (operator) {
-    case "CE":
+    case "Backspace":
     case ".":
-    case "+/-":
+    case "F9":
       createNumber(operator);
       break;
-    case "C":
+    case "Delete":
       clearAll();
       break;
     case "%":
